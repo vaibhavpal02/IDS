@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intrusion Detection System</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5; /* Light background color */
+      color: #333; /* Text color */
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar {
+      background-color: #001f3f; /* Dark blue background color for navbar */
+      color: #fff; /* Navbar text color */
+    }
+
+    .navbar-brand,
+    .nav-link {
+      color: inherit; /* Inherit color from navbar */
+    }
+
+    .hero-section {
+      height: 100vh;
+      background-image: url('https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: background-image 0.5s ease;
+    }
+
+    .section-heading {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      color: #007bff; /* Accent color for section headings */
+    }
+
+    .btn-custom {
+      background-color: #007bff; /* Accent color for buttons */
+      color: #ffffff;
+      border: 1px solid #007bff; /* Accent color border for buttons */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .btn-custom:hover {
+      background-color: #0056b3; /* Darker accent color on hover */
+    }
+
+    /* Define status colors */
+    .severity-high { color: #ff0000; } /* Red for high severity */
+    .severity-medium { color: #ffd700; } /* Yellow for medium severity */
+    .severity-low { color: #008000; } /* Green for low severity */
+
+    /* Dark mode styles */
+    .navbar.dark-mode {
+      background-color: #171a20;
+    }
+
+    .navbar-brand.dark-mode,
+    .nav-link.dark-mode {
+      color: #fff;
+    }
+
+    body.dark-mode {
+      background-color: #171a20;
+      color: #fff;
+    }
+
+    /* Carousel caption styles */
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for captions */
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .carousel-caption h5,
+    .carousel-caption p {
+      color: #fff; /* White text color for captions */
+      margin-bottom: 0;
+    }
+
+    /* Adjust carousel height */
+    .carousel-item img {
+      height: 300px;
+      object-fit: cover;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        height: 70vh; /* Adjust height for smaller screens */
+      }
+
+      .carousel-item img {
+        height: 200px; /* Adjust carousel image height */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Theme toggle button -->
+  <button id="themeToggle" class="btn btn-light"><i id="themeIcon" class="bi bi-moon-fill"></i><span id="themeText">Dark Mode</span></button>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">IDS Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutLink">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Scrolling Image -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Welcome to IDS</h1>
+      <p>Discover the power of our Network Intrusion Detection System.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- Carousel Section -->
+    <section id="carouselSection" class="section-content">
+      <h2 class="section-heading">Online Fraud Statistics</h2>
+      <div id="fraudCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://akm-img-a-in.tosshub.com/indiatoday/styles/medium_crop_simple/public/2023-10/cs_2_1.jpg?VersionId=p7dFbXiuOTSMx0V1OouKoh8DalefGguc&size=750:*" class="d-block w-100" alt="Online Fraud 2022">
+            <div class="carousel-caption">
+              <h5>Online Fraud in 2022</h5>
+              <p>Number of people affected: 7K</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://bsmedia.business-standard.com/_media/bs/img/article/2024-02/06/full/1707229287-7375.jpg" class="d-block w-100" alt="Online Fraud 2023">
+            <div class="carousel-caption">
+              <h5>Online Fraud in 2023</h5>
+              <p>Number of people affected: 15K</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://bl-i.thgim.com/public/migration_catalog/article18281910.ece/alternates/LANDSCAPE_1200/net-fraud" class="d-block w-100" alt="Online Fraud 2024">
+            <div class="carousel-caption">
+              <h5>Online Fraud in 2024</h5>
+              <p>Number of people affected: 8K</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#fraudCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#fraudCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Signup Section -->
+    <div id="signupSection" class="section-content signup-container">
+      <h2 class="section-heading">Signup</h2>
+      <form id="signupForm">
+        <div class="mb-3">
+          <label for="signupUsername" class="form-label">Username</label>
+          <input type="text" class="form-control" id="signupUsername" placeholder="Enter Username" required>
+          <div id="usernameError" class="error-message" style="display: none;"></div> <!-- Error message placeholder -->
+        </div>
+        <div class="mb-3">
+          <label for="signupEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="signupEmail" placeholder="Enter Email" required>
+          <div id="emailError" class="error-message" style="display: none;"></div> <!-- Error message placeholder -->
+        </div>
+        <div class="mb-3">
+          <label for="signupPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="signupPassword" placeholder="Enter Password" required>
+          <div id="passwordError" class="error-message" style="display: none;"></div> <!-- Error message placeholder -->
+        </div>
+        <div id="errorMessages" class="alert alert-danger" style="display: none;"></div> <!-- General error message -->
+        <button type="submit" class="btn btn-custom">Signup</button>
+        <div id="successMessage" class="alert alert-success" style="display: none;">Signup successful!</div> <!-- Success message -->
+      </form>
+      <div id="signupProgress" class="progress" style="display: none;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
+          aria-valuemax="100"></div>
+      </div>
+    </div>
+
+    <!-- Welcome Message Section -->
+    <section id="welcomeSection" class="section-content" style="display: none;">
+      <h2 class="section-heading">Welcome to the Dashboard</h2>
+    </section>
+
+    <!-- Logs Section -->
+    <section id="logsSection" class="section-content" style="display: none;">
+      <h2 class="section-heading">Logs</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Timestamp</th>
+            <th scope="col">Event</th>
+            <th scope="col">Severity</th>
+          </tr>
+        </thead>
+        <tbody id="logsData">
+          <!-- Log data will be dynamically populated here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Alerts Section -->
+    <section id="alertsSection" class="section-content" style="display: none;">
+      <h2 class="section-heading">Alerts</h2>
+      <ul class="list-group" id="alertsData">
+        <!-- Alert data will be dynamically populated here -->
+      </ul>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settingsSection" class="section-content" style="display: none;">
+      <h2 class="section-heading">Settings</h2>
+      <form id="settingsForm">
+        <div class="mb-3">
+          <label for="thresholdInput" class="form-label">Alert Threshold</label>
+          <input type="number" class="form-control" id="thresholdInput" placeholder="Enter threshold">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.3/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeText = document.getElementById('themeText');
+      const signupForm = document.getElementById('signupForm');
+      const signupContainer = document.querySelector('.signup-container');
+      const logsData = document.getElementById('logsData');
+      const alertsData = document.getElementById('alertsData');
+      const logoutLink = document.getElementById('logoutLink');
+
+      // Theme toggle button functionality
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('dark-mode');
+        const navbarBrand = document.querySelector('.navbar-brand');
+        navbarBrand.classList.toggle('dark-mode');
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => link.classList.toggle('dark-mode'));
+        signupContainer.classList.toggle('dark-mode');
+
+        // Update theme toggle button icon and text
+        if (document.body.classList.contains('dark-mode')) {
+          themeIcon.classList.remove('bi-moon-fill');
+          themeIcon.classList.add('bi-sun-fill');
+          themeText.innerText = 'Light Mode';
+        } else {
+          themeIcon.classList.remove('bi-sun-fill');
+          themeIcon.classList.add('bi-moon-fill');
+          themeText.innerText = 'Dark Mode';
+        }
+      });
+
+      // Automated carousel functionality
+      const carousel = new bootstrap.Carousel(document.querySelector('#fraudCarousel'), {
+        interval: 5000, // 5 seconds interval between slides
+        pause: false // Disable pause on hover
+      });
+
+      // Function to show the dashboard after successful signup
+      function showDashboard() {
+        signupContainer.style.display = 'none';
+        document.getElementById('signupProgress').style.display = 'block'; // Show progress indicator
+        setTimeout(() => {
+          document.getElementById('signupProgress').style.display = 'none';
+          document.getElementById('welcomeSection').style.display = 'block';
+          document.getElementById('logsSection').style.display = 'block';
+          document.getElementById('alertsSection').style.display = 'block';
+          document.getElementById('settingsSection').style.display = 'block';
+          document.getElementById('carouselSection').style.display = 'block'; // Show carousel section
+        }, 2000); // Simulate a 2-second delay for signup process
+      }
+
+      // Event listener for signup form submission
+      signupForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const username = document.getElementById('signupUsername').value.trim();
+        const email = document.getElementById('signupEmail').value.trim();
+        const password = document.getElementById('signupPassword').value.trim();
+
+        if (username === '') {
+          document.getElementById('usernameError').innerText = 'Username is required.';
+          document.getElementById('usernameError').style.display = 'block';
+        } else {
+          document.getElementById('usernameError').style.display = 'none';
+        }
+
+        if (email === '') {
+          document.getElementById('emailError').innerText = 'Email is required.';
+          document.getElementById('emailError').style.display = 'block';
+        } else {
+          document.getElementById('emailError').style.display = 'none';
+        }
+
+        if (password === '') {
+          document.getElementById('passwordError').innerText = 'Password is required.';
+          document.getElementById('passwordError').style.display = 'block';
+        } else {
+          document.getElementById('passwordError').style.display = 'none';
+        }
+
+        // If all fields are valid, proceed with signup
+        if (username && email && password) {
+          // Simulate signup process (can be replaced with actual signup API call)
+          setTimeout(() => {
+            showDashboard();
+            document.getElementById('successMessage').style.display = 'block'; // Show success message
+          }, 2000); // Simulate a 2-second delay for signup process
+        }
+      });
+
+      // Logout functionality
+      logoutLink.addEventListener('click', () => {
+        // Perform logout operations here (e.g., clearing session, redirecting to login page)
+        console.log('Logout clicked');
+      });
+
+      // Dummy data for logs and alerts (can be replaced with actual data)
+      const logs = [
+        { timestamp: '2024-03-16 10:30:00', event: 'Suspicious activity detected', severity: 'high' },
+        { timestamp: '2024-03-16 11:45:00', event: 'Unauthorized access attempt', severity: 'medium' },
+        { timestamp: '2024-03-17 14:20:00', event: 'Malware infection detected', severity: 'high' },
+        { timestamp: '2024-03-17 17:10:00', event: 'Port scan detected', severity: 'medium' },
+      ];
+
+      const alerts = [
+        { timestamp: '2024-03-17 14:20:00', alertType: 'Malware infection', severity: 'high' },
+        { timestamp: '2024-03-17 17:10:00', alertType: 'Port scan', severity: 'medium' },
+      ];
+
+      // Populate logs and alerts data
+      logs.forEach(log => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${log.timestamp}</td>
+          <td>${log.event}</td>
+          <td><span class="severity-${log.severity}">${log.severity}</span></td>
+        `;
+        logsData.appendChild(row);
+      });
+
+      alerts.forEach(alert => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        listItem.innerHTML = `
+          <span>${alert.alertType}</span>
+          <span class="badge bg-${alert.severity === 'high' ? 'danger' : alert.severity === 'medium' ? 'warning' : 'success'}">${alert.severity}</span>
+        `;
+        alertsData.appendChild(listItem);
+      });
+
+      // Example of saving settings (can be replaced with actual settings saving logic)
+      const settingsForm = document.getElementById('settingsForm');
+      settingsForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const thresholdValue = document.getElementById('thresholdInput').value.trim();
+        if (thresholdValue !== '') {
+          // Save the threshold value (e.g., send it to the server)
+          console.log('Threshold value saved:', thresholdValue);
+          alert('Threshold value saved successfully!');
+        } else {
+          alert('Please enter a valid threshold value.');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
